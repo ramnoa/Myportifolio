@@ -11,15 +11,17 @@ body {
 }
 
 header {
-    background-color: #0066cc;
+    background-color: #2f6192;
     color: white;
     padding: 40px 0;
-    text-align: center;
+    
 }
 
 header h1 {
     margin: 0;
     font-size: 2rem;
+    text-align: justify;
+    
 }
 
 main {
@@ -29,16 +31,17 @@ main {
 }
 
 section {
-    background-color: white;
+    background-color: rgb(235, 230, 230);
     margin: 20px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(165, 60, 60, 0.1);
 }
 
 h2 {
     color: #0066cc;
     margin-top: 0;
+    text-align: center; ;
 }
 
 a {
@@ -50,18 +53,37 @@ a:hover {
     text-decoration: underline;
 }
 
-footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #e9ecef;
-    margin-top: 40px;
-    font-size: 0.9rem;
+f.social-icons {
+  margin-top: 15px;
 }
+
+.social-icons a {
+  color: #0052cc;
+  font-size: 1.8rem;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #003d99;
+}
+
+footer {
+  text-align: center;
+  padding: 15px 10px;
+  background-color: #e0e4e8;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
 ul {
     padding-left: 50px;
+    
 }
 
 p {
     margin-top: 0;
     margin-bottom: 15px;
+    text-align: justify;
 }
