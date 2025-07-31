@@ -43,10 +43,3 @@ LinkedIn: Your LinkedIn Profile
 Feel free to reach out for collaboration, questions, or networking opportunities!
 
 © 2025 Noah Ewalan. All rights reserved.
-
-If you'd like, I can also:
-- Generate this as a `README.md` file you can upload directly,
-- Help design a **clean badge section** (e.g., tools used),
-- Suggest a more creative title or tagline.
-
-Just let me know!
