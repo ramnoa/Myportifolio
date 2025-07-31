@@ -8,7 +8,7 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
+  background-color: #793f19be;
   color: #333;
   padding: 20px;
   max-width: 900px;
@@ -38,7 +38,7 @@ ul {
 }
 
 a {
-  color: #2980b9;
+  color: #061e6e;
   text-decoration: none;
 }
 
@@ -48,6 +48,7 @@ a:hover {
 
 section {
   margin-bottom: 20px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+  padding: 10px ;
+  border-bottom: 5px solid #4d3d3d;
+  box-shadow: #2c3e50;
 }
