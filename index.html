@@ -1,69 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Ewalan Logong | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 
-
-    <title>PORTIFOLIO</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSTT6YV2VB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NSTT6YV2VB');
+  </script>
 </head>
 <body>
-    <h1>NOAH EWALAN| DATA SCIENCE PORTIFOLIO</h1>
-    <p>Welcome to my portfolio page. Here you will find information about my projects and skills.</p>
-    
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li>
-            <strong> <a href="https://github.com/ramnoa/Global-data-dashboard">Global Data Dashboard</a></strong>: A comprehensive dashboard that visualizes global data trends and insights.</li>
-           <li><strong> <a href="https://github.com/ramnoa/airline-meal-preference-model">airline-meal-preference-model</a></strong>:This project is designed to simulate a realistic airline data science use case, helping stakeholders understand customer behavior and improve service personalization.</li>
-        
-        </ul>
-    </section>
 
-    <section>
-        <h2>Skills</h2>
-        <p>I have experience in the following areas:</p>
-        <ul>
-            <li>Web Development</li>
-            <li>Data Analysis</li>
-            <li>Machine Learning</li>
-        </ul>
-    </section>
-    <section>
-       <h2>Certification</h2>
-        <p>I have completed several certifications to enhance my skills:</p>
-          <ul>
-              <li>Data Science Professional Certificate from IBM</li>
-              <li>Python for Data Science and AI from IBM</li>
-              <li>Machine Learning with Python from IBM</li>
-          </ul>
-    </section>
-    <section>
-  <h2>Contact</h2>
-  <p>If you would like to get in touch, please email me or connect on social media:</p>
-  <div class="social-icons">
-    <a href="mailto:ramzeynoah11@gmail.com" title="email">
-      <i class="fas fa-envelope"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/noah-logong-053168348/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BmlsHCnb0S5OL1n8r3mi%2Bpg%3D%3D" target="_blank" title="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/ramnoa" target="_blank" title="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-  </div>
-  <p>Feel free to reach out for collaborations or inquiries.</p>
-</section>
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Noah Ewalan Logong</div>
+    <div>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button id="modeToggle" class="btn">🌙</button>
+  </nav>
 
+  <!-- Hero Section -->
+  <section id="hero">
+    <img src="profile.jpg" alt="Noah Ewalan Logong" class="profile-pic">
+    <h1>Noah Ewalan Logong</h1>
+    <h2>Computer Science Student | Data Science & AI Enthusiast</h2>
+    <p>Passionate about leveraging technology, digital marketing, and AI to build impactful solutions.</p>
+    <a href="noah.docx" class="btn" download>Download CV</a>
+    <a href="#projects" class="btn secondary">View Projects</a>
+  </section>
 
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I’m Noah Ewalan Logong, a Computer Science student passionate about Data Science & AI, Digital Marketing, and building impactful solutions.
+      I enjoy solving problems, creating data-driven applications, and delivering solutions that make a real-world difference.
+    </p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill">
+        <p>Python</p>
+        <div class="progress"><div class="bar" style="width: 85%;"></div></div>
+      </div>
+      <div class="skill">
+        <p>SQL</p>
+        <div class="progress"><div class="bar" style="width: 80%;"></div></div>
+      </div>
+      <div class="skill">
+        <p>Meta Ads</p>
+        <div class="progress"><div class="bar" style="width: 70%;"></div></div>
+      </div>
+      <div class="skill">
+        <p>Canva</p>
+        <div class="progress"><div class="bar" style="width: 75%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Global Data Dashboard</h3>
+        <p>Interactive dashboard showcasing global datasets and insights.</p>
+        <a href="https://github.com/ramnoa/Global-data-dashboard" target="_blank">View Project</a>
+      </div>
+      <div class="card">
+        <h3>Airline Meal Preference Model</h3>
+        <p>Predictive model analyzing airline meal preferences using data science techniques.</p>
+        <a href="https://github.com/ramnoa/airline-meal-preference-model" target="_blank">View Project</a>
+      </div>
+      <div class="card">
+        <h3>Database Final Project</h3>
+        <p>SQL-based project demonstrating database design and management concepts.</p>
+        <a href="https://github.com/ramnoa/Database-final-project" target="_blank">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:ramzeynoah11@gmail.com">ramzeynoah11@gmail.com</a></p>
+    <p>Professional Email: <a href="mailto:ramzeydigitalservices@gmail.com">ramzeydigitalservices@gmail.com</a></p>
+    <p>Phone: <a href="tel:+254719531290">+254 719 531 290</a></p>
+
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Noah Ewalan Logong | Portfolio</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
-<footer>
-    <p>&copy; 2025 Noah Ewalans. All rights reserved.</p>
 </html>
