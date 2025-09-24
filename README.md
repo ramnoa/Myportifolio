@@ -33,8 +33,8 @@ This portfolio showcases some of my key data science projects, highlights my tec
 2. Open `index.html` in your browser.
 
 
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/ramnoa/Myportifolio
+cd Myportifolio
 📬 Contact
 Email: ramzeynoah11@gmail.com
 
