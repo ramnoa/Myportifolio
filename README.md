@@ -37,8 +37,7 @@ git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
 📬 Contact
 Email: ramzeynoah11@gmail.com
-
-LinkedIn: Your LinkedIn Profile
+Phone Number: +254 719 531 290
 
 Feel free to reach out for collaboration, questions, or networking opportunities!
 
