@@ -1,129 +1,1797 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="favicon-32x32.png">
-  <title>Noah Ewalan Logong | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <title>Windows 11 Desktop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSTT6YV2VB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-NSTT6YV2VB');
-  </script>
+        body {
+            overflow: hidden;
+            background-color: #003e92;
+            background-image: 
+                linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%),
+                radial-gradient(circle at 20% 50%, rgba(0, 119, 182, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 180, 216, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 89, 179, 0.2) 0%, transparent 70%);
+            background-size: 100% 100%, 300px 300px, 300px 300px, 400px 400px;
+            background-position: 0 0, 0 0, 100% 100%, 50% 50%;
+            background-repeat: no-repeat;
+            position: relative;
+            height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%),
+                linear-gradient(90deg, transparent 40%, rgba(0, 119, 182, 0.1) 60%, transparent 80%),
+                linear-gradient(180deg, transparent 40%, rgba(0, 180, 216, 0.1) 60%, transparent 80%);
+            background-size: 200px 200px, 250px 250px, 300px 300px, 350px 350px;
+            background-position: 0 0, 50px 50px, 100px 100px, 150px 150px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxmaWx0ZXIgaWQ9Im5vaXNlIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjAzIi8+PC9zdmc+');
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .login-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .login-profile {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: #003e92;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: profileAppear 0.8s ease-out;
+        }
+
+        @keyframes profileAppear {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            70% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .login-text {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 30px;
+            animation: textAppear 1s ease-out 0.5s both;
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-button {
+            padding: 12px 40px;
+            background-color: #0067c0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: buttonAppear 1s ease-out 0.8s both;
+        }
+
+        @keyframes buttonAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-button:hover {
+            background-color: #005a9e;
+        }
+
+        /* Desktop */
+        .desktop {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: none;
+            z-index: 3;
+        }
+
+        .desktop.visible {
+            display: block;
+        }
+
+        /* Desktop Icons */
+        .desktop-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 80px);
+            grid-gap: 20px;
+            z-index: 4;
+        }
+
+        .desktop-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .desktop-icon:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .desktop-icon:active {
+            transform: scale(0.95);
+        }
+
+        .desktop-icon.selected {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .desktop-icon-img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px;
+        }
+
+        .desktop-icon-text {
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Context Menu */
+        .context-menu {
+            position: fixed;
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            padding: 5px 0;
+            z-index: 1001;
+            display: none;
+            min-width: 180px;
+        }
+
+        .context-menu.visible {
+            display: block;
+        }
+
+        .context-menu-item {
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .context-menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .context-menu-separator {
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin: 5px 0;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .taskbar-content {
+            width: 100%;
+            max-width: 97%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .taskbar-left, .taskbar-right {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .taskbar-center {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .start-button {
+            width: 48px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .start-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .start-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .search-box {
+            width: 270px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            margin: 0 8px;
+        }
+
+        .search-box img {
+            width: 16px;
+            height: 16px;
+            opacity: 0.6;
+            margin-right: 8px;
+        }
+
+        .search-box span {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .taskbar-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin: 0 4px;
+            position: relative;
+        }
+
+        .taskbar-icon:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .taskbar-icon.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .taskbar-icon img {
+            width: 20px;
+            height: 20px;
+            opacity: 0.8;
+        }
+
+        .taskbar-icon-indicator {
+            position: absolute;
+            bottom: 2px;
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .taskbar-icon.active .taskbar-icon-indicator {
+            opacity: 1;
+        }
+
+        .system-tray {
+            display: flex;
+            align-items: center;
+        }
+
+        .clock {
+            color: white;
+            font-size: 14px;
+            margin: 0 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .clock:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .show-desktop {
+            width: 8px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .show-desktop:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Start Menu */
+        .start-menu {
+            position: fixed;
+            bottom: 60px;
+            left: 20px;
+            width: 320px;
+            height: 450px;
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 99;
+        }
+
+        .start-menu.visible {
+            display: flex;
+        }
+
+        .start-menu-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-profile {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #0067c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            margin-right: 12px;
+        }
+
+        .user-name {
+            color: white;
+            font-size: 14px;
+        }
+
+        .start-menu-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+
+        .pinned-apps {
+            padding: 0 20px 10px;
+        }
+
+        .pinned-apps-title {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .pinned-apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+
+        .pinned-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .pinned-app:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pinned-app-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .pinned-app-name {
+            color: white;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .recommended-section {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .recommended-title {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .recommended-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 5px;
+        }
+
+        .recommended-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .recommended-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .recommended-info {
+            flex-grow: 1;
+        }
+
+        .recommended-name {
+            color: white;
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .recommended-detail {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 10px;
+        }
+
+        .start-menu-footer {
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .start-menu-button {
+            display: flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .start-menu-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .start-menu-button-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .start-menu-button-text {
+            color: white;
+            font-size: 12px;
+        }
+
+        /* Windows */
+        .window {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 10;
+            min-width: 400px;
+            min-height: 300px;
+            transition: none;
+        }
+
+        .window.active {
+            display: flex;
+        }
+
+        .window.maximized {
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: calc(100% - 48px) !important;
+            border-radius: 0 !important;
+        }
+
+        .window.minimized {
+            display: none !important;
+        }
+
+        .window-header {
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            cursor: move;
+            user-select: none;
+        }
+
+        .window-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .window-controls {
+            display: flex;
+        }
+
+        .window-control {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .window-control:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .window-close:hover {
+            background-color: #e81123;
+        }
+
+        .window-close:hover::before {
+            color: white;
+        }
+
+        .window-control::before {
+            content: '';
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .window-minimize::before {
+            content: '—';
+        }
+
+        .window-maximize::before {
+            content: '□';
+        }
+
+        .window-restore::before {
+            content: '❐';
+        }
+
+        .window-close::before {
+            content: '×';
+        }
+
+        .window-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Portfolio Window */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .portfolio-item {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item-image {
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #0067c0;
+        }
+
+        .portfolio-item-info {
+            padding: 15px;
+        }
+
+        .portfolio-item-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-item-description {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* About Me Window */
+        .about-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .about-profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #0067c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+
+        .about-profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-profile-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .about-profile-info p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .about-section {
+            margin-bottom: 20px;
+        }
+
+        .about-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .about-section p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .contact-item-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0067c0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #0067c0;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Gallery Window */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-gap: 15px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Skills Window */
+        .skills-section {
+            margin-bottom: 25px;
+        }
+
+        .skills-section h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #0067c0;
+            border-bottom: 1px solid rgba(0, 103, 192, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .skills-section ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .skills-section li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .skills-section li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0067c0;
+            font-weight: bold;
+        }
+
+        /* Window Preview */
+        .window-preview {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 101;
+            overflow: hidden;
+            width: 200px;
+            height: 150px;
+        }
+
+        .window-preview.visible {
+            display: block;
+        }
+
+        .window-preview-header {
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .window-preview-content {
+            height: calc(100% - 24px);
+            padding: 10px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #0067c0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .desktop-icons {
+                grid-template-columns: repeat(auto-fill, 60px);
+            }
+            
+            .desktop-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .desktop-icon-img {
+                width: 36px;
+                height: 36px;
+                font-size: 28px;
+            }
+            
+            .desktop-icon-text {
+                font-size: 10px;
+            }
+            
+            .search-box {
+                width: 150px;
+            }
+            
+            .start-menu {
+                width: 280px;
+                height: 400px;
+            }
+            
+            .pinned-apps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .window {
+                min-width: 300px;
+                min-height: 250px;
+            }
+        }
+          .portfolio-item-image {
+            width: 100%;
+            height: 150px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #0067c0;
+            position: relative; /* added so overlay icon can be positioned */
+        }
+
+        /* small project icon overlay inside portfolio item */
+        .project-icon {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .project-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+    </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav>
-    <div class="logo">Noah Ewalan Logong</div>
-    <div>
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-profile">👤</div>
+        <div class="login-text">Welcome press sign in to view </div>
+        <button class="login-button" id="loginButton">Sign in</button>
     </div>
-    <button id="modeToggle" class="btn">🌙</button>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <img src="profile.jpg" alt="Noah Ewalan Logong" class="profile-pic">
-    <h1>Noah Ewalan Logong</h1>
-    <h2>Computer Science Student | Data Science & AI Enthusiast</h2>
-    <p>Passionate about leveraging technology, digital marketing, and AI to build impactful solutions.</p>
-    <a href="noah .pdf" class="btn" download>Download CV</a>
-    <a href="#projects" class="btn secondary">View Projects</a>
-  </section>
+    <!-- Desktop -->
+    <div class="desktop" id="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" id="portfolioIcon" data-app="portfolio">
+                <div class="desktop-icon-img">📁</div>
+                <div class="desktop-icon-text">Portfolio</div>
+            </div>
+            <div class="desktop-icon" id="aboutIcon" data-app="about">
+                <div class="desktop-icon-img">👤</div>
+                <div class="desktop-icon-text">About Me</div>
+            </div>
+            <div class="desktop-icon" id="galleryIcon" data-app="gallery">
+                <div class="desktop-icon-img">🖼️</div>
+                <div class="desktop-icon-text">Gallery</div>
+            </div>
+            <div class="desktop-icon" id="skillsIcon" data-app="skills">
+                <div class="desktop-icon-img">🎯</div>
+                <div class="desktop-icon-text">Skills</div>
+            </div>
+        </div>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hello! I’m Noah Ewalan Logong, a Computer Science student passionate about Data Science & AI, Digital Marketing, and building impactful solutions.
-      I enjoy solving problems, creating data-driven applications, and delivering solutions that make a real-world difference.
-    </p>
-  </section>
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="taskbar-content">
+                <div class="taskbar-left">
+                    <button class="start-button" id="startButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M3 12h18v3H3zm0-7h18v3H3zm0 14h18v3H3z"/>
+                        </svg>
+                    </button>
+                    <div class="search-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white" opacity="0.6">
+                            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                        <span>Search</span>
+                    </div>
+                </div>
+                <div class="taskbar-center" id="taskbarCenter">
+                    <!-- Taskbar app icons will be added here dynamically -->
+                </div>
+                <div class="taskbar-right">
+                    <div class="taskbar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" opacity="0.8">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                    </div>
+                    <div class="taskbar-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white" opacity="0.8">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="clock" id="clock">00:00</div>
+                    <div class="show-desktop" id="showDesktop"></div>
+                </div>
+            </div>
+        </div>
 
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="skill">
-        <p>Python</p>
-        <div class="progress"><div class="bar" style="width: 85%;"></div></div>
-      </div>
-      <div class="skill">
-        <p>SQL</p>
-        <div class="progress"><div class="bar" style="width: 80%;"></div></div>
-      </div>
-      <div class="skill">
-        <p>Meta Ads</p>
-        <div class="progress"><div class="bar" style="width: 70%;"></div></div>
-      </div>
-      <div class="skill">
-        <p>Tableau</p>
-        <div class="progress"><div class="bar" style="width: 74%;"></div></div>
-      </div>
-      <div class="skill">
-        <p>Canva</p>
-        <div class="progress"><div class="bar" style="width: 75%;"></div></div>
-      </div>
+        <!-- Start Menu -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-header">
+                <div class="user-profile">👤</div>
+                <div class="user-name">User</div>
+            </div>
+            <div class="start-menu-content">
+                <div class="pinned-apps">
+                    <div class="pinned-apps-title">Pinned apps</div>
+                    <div class="pinned-apps-grid">
+                        <div class="pinned-app" data-app="portfolio">
+                            <div class="pinned-app-icon">📁</div>
+                            <div class="pinned-app-name">Portfolio</div>
+                        </div>
+                        <div class="pinned-app" data-app="about">
+                            <div class="pinned-app-icon">👤</div>
+                            <div class="pinned-app-name">About Me</div>
+                        </div>
+                        <div class="pinned-app" data-app="gallery">
+                            <div class="pinned-app-icon">🖼️</div>
+                            <div class="pinned-app-name">Gallery</div>
+                        </div>
+                        <div class="pinned-app" data-app="skills">
+                            <div class="pinned-app-icon">🎯</div>
+                            <div class="pinned-app-name">Skills</div>
+                        </div>
+                        <div class="pinned-app">
+                            <div class="pinned-app-icon">⚙️</div>
+                            <div class="pinned-app-name">Settings</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="recommended-section">
+                    <div class="recommended-title">Recommended</div>
+                    <div class="recommended-item">
+                        <div class="recommended-icon">📄</div>
+                        <div class="recommended-info">
+                            <div class="recommended-name">Document.docx</div>
+                            <div class="recommended-detail">Modified yesterday</div>
+                        </div>
+                    </div>
+                    <div class="recommended-item">
+                        <div class="recommended-icon">🖼️</div>
+                        <div class="recommended-info">
+                            <div class="recommended-name">Image.png</div>
+                            <div class="recommended-detail">Modified 2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="start-menu-footer">
+                <div class="start-menu-button">
+                    <div class="start-menu-button-icon">⚙️</div>
+                    <div class="start-menu-button-text">Settings</div>
+                </div>
+                <div class="start-menu-button">
+                    <div class="start-menu-button-icon">⏻️</div>
+                    <div class="start-menu-button-text">Power</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Windows -->
+        <!-- Portfolio Window -->
+        <div class="window" id="portfolioWindow" data-app="portfolio">
+            <div class="window-header">
+                <div class="window-title">Portfolio</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize"></div>
+                    <div class="window-control window-maximize"></div>
+                    <div class="window-control window-close"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">📱</div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Mobile App</div>
+                            <div class="portfolio-item-description">A cross-platform mobile application</div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">🌐</div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Website</div>
+                            <div class="portfolio-item-description">Responsive website design</div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">🎮</div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Game</div>
+                            <div class="portfolio-item-description">Interactive browser-based game</div>
+                        </div>
+                    </div>
+
+            
+
+                    <!-- Global Library Dashboard (Tableau) -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">📊</div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Global Library Dashboard</div>
+                            <div class="portfolio-item-description">
+                                Tableau dashboard showing library counts by region (data from IBM).
+                                <a href="https://public.tableau.com/views/countrydetails_17503223257800/CountryDetailsbyRegion?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" rel="noopener noreferrer">View on Tableau Public</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Library Management System Database -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">🗄️
+                        </div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Library Management System — Database</div>
+                            <div class="portfolio-item-description">
+                                MySQL schema for a Library Management System: Readers, Staff, Books, Publishers, Reports with PK/FK constraints.
+                                <a href="https://github.com/ramnoa/Database-final-project" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Undernourishment Predictor — SDG 2 -->
+                       <!-- Undernourishment Predictor — SDG 2 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-item-image">
+                            <img src="images/undernourishment-thumb.jpg"
+                                 alt="Undernourishment Predictor thumbnail"
+                                 loading="lazy"
+                                 style="width:100%;height:100%;object-fit:cover;">
+                            <div class="project-icon" aria-hidden="true" title="Undernourishment Predictor">
+                                <!-- inline SVG: leaf + bar chart -->
+                                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Undernourishment Predictor icon">
+                                    <rect width="64" height="64" rx="8" fill="none"/>
+                                    <g transform="translate(4,4)" fill="none" stroke="none">
+                                        <!-- leaf -->
+                                        <path d="M18 6c-6 0-12 6-15 12 9 0 15 6 15 12 6-9 9-21 0-24z" fill="#2aa98a"/>
+                                        <!-- bars -->
+                                        <rect x="36" y="28" width="6" height="12" fill="#0067c0"/>
+                                        <rect x="28" y="22" width="6" height="18" fill="#007acc"/>
+                                        <rect x="20" y="16" width="6" height="24" fill="#0096d6"/>
+                                    </g>
+                                </svg>
+                             </div>
+                        </div>
+                        <div class="portfolio-item-info">
+                            <div class="portfolio-item-title">Undernourishment Predictor — SDG 2</div>
+                            <div class="portfolio-item-description">
+                                Random Forest regressor predicting prevalence of undernourishment by country and year. RMSE: 0.91, R²: 0.993.
+                                <a href="https://github.com/ramnoa/Undernourishment-Predictor" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Me Window -->
+        <div class="window" id="aboutWindow" data-app="about">
+            <div class="window-header">
+                <div class="window-title">About Me</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize"></div>
+                    <div class="window-control window-maximize"></div>
+                    <div class="window-control window-close"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="about-profile">
+                    <div class="about-profile-image">
+                        <img src="https://z-cdn-media.chatglm.cn/files/d7d91162-4b87-44ce-a5c1-bd4dfcdb0ec3_54940577710_63bc07bfa0_h%20-%20Copy.jpg?auth_key=1863999375-7a9a6e422bad48b880496d2bee691108-0-882cfe7bc91ebbcd0e05b5895abb8bb5" alt="Profile Image">
+                    </div>
+                    <div class="about-profile-info">
+                        <h2>Noah Ewalan Logong</h2>
+                        <p>Computer Science Student & Digital Creator</p>
+                    </div>
+                </div>
+                <div class="about-section">
+                    <h3>About</h3>
+                    <p>I am a computer science student and digital creator with growing experience in content creation, social media management, and design. My background includes roles at Platinum Credit Limited and Safaricom, where I developed strong communication and customer engagement skills.</p>
+                    <p>I am currently building my skills in data science, software development, and real-world project implementation. I also run inspirational and educational platforms such as Whispers of Wellness and HolyWord Explorers.</p>
+                    <p>I am committed to continuous learning, creativity, and developing impactful digital solutions.</p>
+                </div>
+                <div class="about-section">
+                    <h3>Skills</h3>
+                    <p>Content Creation, Social Media Management, Design, Data Science, Software Development, Project Implementation, Communication, Customer Engagement</p>
+                </div>
+                <div class="about-section">
+                    <h3>Experience</h3>
+                    <p><strong>Platinum Credit Limited</strong> - Developed strong communication and customer engagement skills</p>
+                    <p><strong>Safaricom</strong> - Enhanced customer engagement and communication abilities</p>
+                    <p><strong>Whispers of Wellness</strong> - Founder of inspirational platform</p>
+                    <p><strong>HolyWord Explorers</strong> - Creator of educational platform</p>
+                </div>
+                <div class="about-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">✉️</div>
+                            <span>Ramzeynoah@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📱</div>
+                            <span>+254 719 531 290</span>
+                        </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📍</div>
+                            <span>Nairobi, Kenya</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                  <a href="https://www.linkedin.com/in/noah-logong-053168348" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                         <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v14H0zM7 8h4.8v2h.1c.7-1.2 2.4-2.4 4.9-2.4 3.9 0 5.2 2.3 5.2 6.7V22h-5v-6.2c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V22H7z"/>
+                     </svg>
+                  </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Window -->
+        <div class="window" id="galleryWindow" data-app="gallery">
+            <div class="window-header">
+                <div class="window-title">Gallery</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize"></div>
+                    <div class="window-control window-maximize"></div>
+                    <div class="window-control window-close"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://z-cdn-media.chatglm.cn/files/d7d91162-4b87-44ce-a5c1-bd4dfcdb0ec3_54940577710_63bc07bfa0_h%20-%20Copy.jpg?auth_key=1863999375-7a9a6e422bad48b880496d2bee691108-0-882cfe7bc91ebbcd0e05b5895abb8bb5" alt="Gallery Image 1">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Window -->
+        <div class="window" id="skillsWindow" data-app="skills">
+            <div class="window-header">
+                <div class="window-title">Skills</div>
+                <div class="window-controls">
+                    <div class="window-control window-minimize"></div>
+                    <div class="window-control window-maximize"></div>
+                    <div class="window-control window-close"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="skills-section">
+                    <h3>Data Science & AI</h3>
+                    <ul>
+                        <li>Data analysis</li>
+                        <li>Visualization</li>
+                        <li>Basic machine learning</li>
+                        <li>Python programming</li>
+                        <li>SQL</li>
+                        <li>Computer vision</li>
+                        <li>Tableau</li>
+                        <li>Excel</li>
+                        <li>Project implementation</li>
+                    </ul>
+                </div>
+                <div class="skills-section">
+                    <h3>Digital Marketing & Content Creation</h3>
+                    <ul>
+                        <li>Social media management</li>
+                        <li>Meta Ads</li>
+                        <li>Content creation</li>
+                        <li>Video editing</li>
+                        <li>Thumbnails</li>
+                        <li>SEO</li>
+                        <li>YouTube optimization</li>
+                    </ul>
+                </div>
+                <div class="skills-section">
+                    <h3>Technical & Creative Skills</h3>
+                    <ul>
+                        <li>Web development (HTML, CSS, JS)</li>
+                        <li>Graphic design (Canva)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Global Data Dashboard</h3>
-        <p>Interactive dashboard showcasing global datasets and insights.</p>
-        <a href="https://github.com/ramnoa/Global-data-dashboard" target="_blank">View Project</a>
-      </div>
-      <div class="card">
-        <h3>Airline Meal Preference Model</h3>
-        <p>Predictive model analyzing airline meal preferences using data science techniques.</p>
-        <a href="https://github.com/ramnoa/airline-meal-preference-model" target="_blank">View Project</a>
-      </div>
-      <div class="card">
-        <h3>Database Final Project</h3>
-        <p>SQL-based project demonstrating database design and management concepts.</p>
-        <a href="https://github.com/ramnoa/Database-final-project" target="_blank">View Project</a>
-      </div>
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" id="contextOpen">Open</div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" id="contextRename">Rename</div>
+        <div class="context-menu-item" id="contextDelete">Delete</div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:ramzeynoah11@gmail.com">ramzeynoah11@gmail.com</a></p>
-    <p>Professional Email: <a href="mailto:ramzeydigitalservices@gmail.com">ramzeydigitalservices@gmail.com</a></p>
-    <p>Phone: <a href="tel:+254719531290">+254 719 531 290</a></p>
-    <div>
-      <a href="https://www.linkedin.com/in/noah-logong-053168348" target="_blank">
-        <img src="linkedin.png" alt="LinkedIn" style="width:24px; vertical-align:middle;">
-        LinkedIn Profile
-      </a>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <!-- Window Preview -->
+    <div class="window-preview" id="windowPreview">
+        <div class="window-preview-header" id="previewTitle">Window Title</div>
+        <div class="window-preview-content" id="previewContent">📁</div>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Noah Ewalan Logong | Portfolio</p>
-  </footer>
+    <script>
+        // Wait for the DOM to be fully loaded before running the script
+        document.addEventListener('DOMContentLoaded', function() {
+            // Login Screen
+            const loginScreen = document.getElementById('loginScreen');
+            const loginButton = document.getElementById('loginButton');
+            const desktop = document.getElementById('desktop');
 
-  <!-- Script -->
-  <script src="script.js"></script>
+            loginButton.addEventListener('click', function() {
+                loginScreen.classList.add('hidden');
+                setTimeout(function() {
+                    desktop.classList.add('visible');
+                }, 500);
+            });
+
+            // Clock
+            const clock = document.getElementById('clock');
+            
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                clock.textContent = `${hours}:${minutes}`;
+            }
+
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Start Menu
+            const startButton = document.getElementById('startButton');
+            const startMenu = document.getElementById('startMenu');
+
+            startButton.addEventListener('click', function() {
+                startMenu.classList.toggle('visible');
+            });
+
+            // Close start menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!startButton.contains(e.target) && !startMenu.contains(e.target)) {
+                    startMenu.classList.remove('visible');
+                }
+            });
+
+            // Context Menu
+            const contextMenu = document.getElementById('contextMenu');
+            let contextTarget = null;
+
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                
+                if (e.target.closest('.desktop-icon')) {
+                    contextTarget = e.target.closest('.desktop-icon');
+                    contextMenu.style.left = `${e.clientX}px`;
+                    contextMenu.style.top = `${e.clientY}px`;
+                    contextMenu.classList.add('visible');
+                } else {
+                    contextMenu.classList.remove('visible');
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!contextMenu.contains(e.target)) {
+                    contextMenu.classList.remove('visible');
+                }
+            });
+
+            // Context Menu Actions
+            document.getElementById('contextOpen').addEventListener('click', function() {
+                if (contextTarget) {
+                    const appName = contextTarget.dataset.app;
+                    openApp(appName);
+                    contextMenu.classList.remove('visible');
+                }
+            });
+
+            document.getElementById('contextRename').addEventListener('click', function() {
+                if (contextTarget) {
+                    const textElement = contextTarget.querySelector('.desktop-icon-text');
+                    const currentText = textElement.textContent;
+                    
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText;
+                    input.style.width = '80px';
+                    input.style.fontSize = '12px';
+                    input.style.textAlign = 'center';
+                    input.style.background = 'transparent';
+                    input.style.border = '1px solid white';
+                    input.style.color = 'white';
+                    input.style.textShadow = '0 0 3px rgba(0, 0, 0, 0.7)';
+                    
+                    textElement.style.display = 'none';
+                    contextTarget.appendChild(input);
+                    input.focus();
+                    input.select();
+                    
+                    const finishRename = function() {
+                        textElement.textContent = input.value || currentText;
+                        textElement.style.display = 'block';
+                        input.remove();
+                    };
+                    
+                    input.addEventListener('blur', finishRename);
+                    input.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter') {
+                            finishRename();
+                        }
+                    });
+                    
+                    contextMenu.classList.remove('visible');
+                }
+            });
+
+            document.getElementById('contextDelete').addEventListener('click', function() {
+                if (contextTarget) {
+                    contextTarget.remove();
+                    contextMenu.classList.remove('visible');
+                }
+            });
+
+            // Desktop Icons
+            const desktopIcons = document.querySelectorAll('.desktop-icon');
+            
+            desktopIcons.forEach(function(icon) {
+                icon.addEventListener('dblclick', function() {
+                    const appName = icon.dataset.app;
+                    openApp(appName);
+                });
+            });
+
+            // Pinned apps in start menu
+            const pinnedApps = document.querySelectorAll('.pinned-app[data-app]');
+            
+            pinnedApps.forEach(function(app) {
+                app.addEventListener('click', function() {
+                    const appName = app.dataset.app;
+                    openApp(appName);
+                    startMenu.classList.remove('visible');
+                });
+            });
+
+            // Taskbar
+            const taskbarCenter = document.getElementById('taskbarCenter');
+            const windowPreview = document.getElementById('windowPreview');
+            const previewTitle = document.getElementById('previewTitle');
+            const previewContent = document.getElementById('previewContent');
+
+            // Windows
+            const windows = document.querySelectorAll('.window');
+            let activeWindow = null;
+            let offsetX = 0;
+            let offsetY = 0;
+            let isDragging = false;
+            let originalSize = {};
+
+            // Create taskbar icons for windows
+            function createTaskbarIcon(window) {
+                const appName = window.dataset.app;
+                const icon = document.createElement('div');
+                icon.className = 'taskbar-icon';
+                icon.dataset.app = appName;
+                icon.innerHTML = `
+                    <span style="font-size: 20px;">${getAppIcon(appName)}</span>
+                    <div class="taskbar-icon-indicator"></div>
+                `;
+                
+                icon.addEventListener('click', function() {
+                    if (window.classList.contains('minimized')) {
+                        window.classList.remove('minimized');
+                        window.classList.add('active');
+                        bringToFront(window);
+                    } else if (window.classList.contains('active')) {
+                        window.classList.add('minimized');
+                        window.classList.remove('active');
+                    } else {
+                        bringToFront(window);
+                    }
+                    updateTaskbarIcons();
+                });
+                
+                icon.addEventListener('mouseenter', function(e) {
+                    if (window.classList.contains('active') && !window.classList.contains('minimized')) {
+                        showWindowPreview(window, e);
+                    }
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    windowPreview.classList.remove('visible');
+                });
+                
+                taskbarCenter.appendChild(icon);
+                return icon;
+            }
+
+            function getAppIcon(appName) {
+                switch(appName) {
+                    case 'portfolio': return '📁';
+                    case 'about': return '👤';
+                    case 'gallery': return '🖼️';
+                    case 'skills': return '🎯';
+                    default: return '📄';
+                }
+            }
+
+            function getAppTitle(appName) {
+                switch(appName) {
+                    case 'portfolio': return 'Portfolio';
+                    case 'about': return 'About Me';
+                    case 'gallery': return 'Gallery';
+                    case 'skills': return 'Skills';
+                    default: return 'Application';
+                }
+            }
+
+            function showWindowPreview(window, event) {
+                const appName = window.dataset.app;
+                previewTitle.textContent = getAppTitle(appName);
+                previewContent.textContent = getAppIcon(appName);
+                
+                const rect = event.target.getBoundingClientRect();
+                windowPreview.style.left = `${rect.left}px`;
+                windowPreview.style.bottom = '60px';
+                windowPreview.classList.add('visible');
+            }
+
+            function updateTaskbarIcons() {
+                const taskbarIcons = taskbarCenter.querySelectorAll('.taskbar-icon');
+                taskbarIcons.forEach(function(icon) {
+                    const appName = icon.dataset.app;
+                    const window = document.querySelector(`.window[data-app="${appName}"]`);
+                    
+                    if (window && window.classList.contains('active') && !window.classList.contains('minimized')) {
+                        icon.classList.add('active');
+                    } else {
+                        icon.classList.remove('active');
+                    }
+                });
+            }
+
+            function openApp(appName) {
+                const window = document.querySelector(`.window[data-app="${appName}"]`);
+                if (window) {
+                    window.classList.add('active');
+                    window.classList.remove('minimized');
+                    bringToFront(window);
+                    
+                    // Create taskbar icon if it doesn't exist
+                    if (!taskbarCenter.querySelector(`.taskbar-icon[data-app="${appName}"]`)) {
+                        createTaskbarIcon(window);
+                    }
+                    
+                    updateTaskbarIcons();
+                }
+            }
+
+            function bringToFront(window) {
+                const highestZIndex = getHighestZIndex();
+                window.style.zIndex = highestZIndex + 1;
+                activeWindow = window;
+            }
+
+            function getHighestZIndex() {
+                let highestZIndex = 0;
+                windows.forEach(function(window) {
+                    const zIndex = parseInt(window.style.zIndex || 0);
+                    if (zIndex > highestZIndex) {
+                        highestZIndex = zIndex;
+                    }
+                });
+                return highestZIndex;
+            }
+
+            // Window Controls
+            windows.forEach(function(window) {
+                const header = window.querySelector('.window-header');
+                const minimizeBtn = window.querySelector('.window-minimize');
+                const maximizeBtn = window.querySelector('.window-maximize');
+                const closeBtn = window.querySelector('.window-close');
+                
+                // Window dragging
+                header.addEventListener('mousedown', function(e) {
+                    if (!window.classList.contains('maximized')) {
+                        isDragging = true;
+                        activeWindow = window;
+                        offsetX = e.clientX - window.offsetLeft;
+                        offsetY = e.clientY - window.offsetTop;
+                        bringToFront(window);
+                    }
+                });
+                
+                // Minimize
+                minimizeBtn.addEventListener('click', function() {
+                    window.classList.add('minimized');
+                    window.classList.remove('active');
+                    updateTaskbarIcons();
+                });
+                
+                // Maximize/Restore
+                maximizeBtn.addEventListener('click', function() {
+                    if (window.classList.contains('maximized')) {
+                        // Restore
+                        window.classList.remove('maximized');
+                        maximizeBtn.classList.remove('window-restore');
+                        maximizeBtn.classList.add('window-maximize');
+                        window.style.width = originalSize.width;
+                        window.style.height = originalSize.height;
+                        window.style.left = originalSize.left;
+                        window.style.top = originalSize.top;
+                    } else {
+                        // Maximize
+                        originalSize = {
+                            width: window.style.width,
+                            height: window.style.height,
+                            left: window.style.left,
+                            top: window.style.top
+                        };
+                        window.classList.add('maximized');
+                        maximizeBtn.classList.remove('window-maximize');
+                        maximizeBtn.classList.add('window-restore');
+                    }
+                });
+                
+                // Close
+                closeBtn.addEventListener('click', function() {
+                    window.classList.remove('active');
+                    window.classList.add('minimized');
+                    
+                    // Remove taskbar icon
+                    const appName = window.dataset.app;
+                    const taskbarIcon = taskbarCenter.querySelector(`.taskbar-icon[data-app="${appName}"]`);
+                    if (taskbarIcon) {
+                        taskbarIcon.remove();
+                    }
+                });
+                
+                // Window focus
+                window.addEventListener('mousedown', function() {
+                    if (!window.classList.contains('minimized')) {
+                        bringToFront(window);
+                        updateTaskbarIcons();
+                    }
+                });
+            });
+
+            // Document mouse events for dragging
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging && activeWindow && !activeWindow.classList.contains('maximized')) {
+                    activeWindow.style.left = `${e.clientX - offsetX}px`;
+                    activeWindow.style.top = `${e.clientY - offsetY}px`;
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+
+            // Show Desktop Button
+            const showDesktop = document.getElementById('showDesktop');
+            
+            showDesktop.addEventListener('click', function() {
+                windows.forEach(function(window) {
+                    if (window.classList.contains('active')) {
+                        window.classList.add('minimized');
+                        window.classList.remove('active');
+                    }
+                });
+                updateTaskbarIcons();
+            });
+
+            // Initial Window Positions
+            const portfolioWindow = document.getElementById('portfolioWindow');
+            const aboutWindow = document.getElementById('aboutWindow');
+            const galleryWindow = document.getElementById('galleryWindow');
+            const skillsWindow = document.getElementById('skillsWindow');
+
+            portfolioWindow.style.left = '100px';
+            portfolioWindow.style.top = '100px';
+            
+            aboutWindow.style.left = '200px';
+            aboutWindow.style.top = '150px';
+            
+            galleryWindow.style.left = '300px';
+            galleryWindow.style.top = '200px';
+            
+            skillsWindow.style.left = '400px';
+            skillsWindow.style.top = '100px';
+        });
+    </script>
 </body>
 </html>
