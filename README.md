@@ -34,9 +34,12 @@ This portfolio showcases some of my key data science projects, highlights my tec
 
 
 git clone https://github.com/ramnoa/Myportifolio
-cd your-repo-name
+cd Myportifolio
+
 📬 Contact
+
 Email: ramzeynoah11@gmail.com
+
 Phone Number: +254 719 531 290
 
 Feel free to reach out for collaboration, questions, or networking opportunities!
